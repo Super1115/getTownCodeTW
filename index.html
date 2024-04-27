@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="getLocation()">取得地點(等待10秒)</button>
+
+<p id="demo"></p>
+
+<script>
+
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(redirect);
+    
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function redirect(position){
+  let link = "http://localhost:8080/?lat="+position.coords.latitude+"&lon="+position.coords.longitude
+  window.location.href = link
+    }
+
+</script>
+
+</body>
+</html>
